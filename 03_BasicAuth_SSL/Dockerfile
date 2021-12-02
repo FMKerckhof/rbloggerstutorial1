@@ -1,5 +1,9 @@
 FROM rocker/r-base
 
+# install dependencies for plumber (otherwise docker image will not build
+RUN apt-get update && \
+	apt-get install -y libsodium-dev libcurl4-gnutls-dev libssl-dev
+
 # install R packages
 RUN install2.r \
    plumber
